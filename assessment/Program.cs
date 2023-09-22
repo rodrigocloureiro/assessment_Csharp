@@ -32,6 +32,31 @@ public class Program
 
         TipoOperacao();
 
+        Menu menu = new Menu(_repositorio);
+
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("1- Visualizar alunos"); // Read
+            Console.WriteLine("2- Adicionar aluno"); // Create
+            Console.WriteLine("3- Editar aluno"); // Update
+            Console.WriteLine("4- Apagar aluno"); // Delete
+            Console.WriteLine("5- Sair");
+            int opcao = int.Parse(Console.ReadLine());
+
+            if (opcao == 5) break;
+
+            switch (opcao)
+            {
+                case 1:
+                    menu.ListarAlunos();
+                    break;
+                case 2:
+                    menu.AdicionarAluno();
+                    break;
+            }
+        }
+
         //_repositorio.Salvar(new Aluno("Rodrigo Loureiro", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
 
         //_repositorio.Listar().ForEach(al => Console.WriteLine(al));

@@ -11,6 +11,7 @@
 
 		public void AdicionarAluno()
 		{
+			Console.Clear();
 			Console.Write("Nome completo: ");
 			string nome = Console.ReadLine();
 
@@ -26,6 +27,7 @@
 		public void ListarAlunos()
 		{
 			_repositorio.Listar().ForEach(al => Console.WriteLine(al));
+			Console.ReadKey();
 		}
 	}
 }
