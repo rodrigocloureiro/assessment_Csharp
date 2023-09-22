@@ -13,6 +13,7 @@
             _nome = nome;
             _dataNascimento = dataNascimento;
             _mediaFinal = mediaFinal;
+            _aprovado = mediaFinal >= 8 ? true : false;
             _id = new Guid();
         }
 
