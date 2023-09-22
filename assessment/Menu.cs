@@ -9,7 +9,7 @@
 			_repositorio = repositorio;
 		}
 
-		public void AdicionarAluno()
+		public void AdicionarAluno() // Create
 		{
 			Console.Clear();
 			Console.Write("Nome completo: ");
@@ -22,10 +22,14 @@
 			double mediaFinal = double.Parse(Console.ReadLine());
 
 			_repositorio.Adicionar(new Aluno(nome, DateTime.ParseExact(dataNascimento, "dd/MM/yyyy", null), mediaFinal));
+
+			Console.WriteLine("Aluno adicionado com sucesso.");
+			Console.ReadKey();
 		}
 
-		public void ListarAlunos()
+		public void ListarAlunos() // Read
 		{
+			Console.WriteLine("Listagem de alunos:");
 			_repositorio.Listar().ForEach(al => Console.WriteLine(al));
 			Console.ReadKey();
 		}
