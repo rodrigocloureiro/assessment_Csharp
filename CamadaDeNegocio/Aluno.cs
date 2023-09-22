@@ -17,6 +17,15 @@
             _id = Guid.NewGuid();
         }
 
+        public Aluno(string nome, DateTime dataNascimento, double mediaFinal, Guid id)
+        {
+            _nome = nome;
+            _dataNascimento = dataNascimento;
+            _mediaFinal = mediaFinal;
+            _aprovado = mediaFinal >= 8 ? true : false;
+            _id = id;
+        }
+
         public string Nome { get { return _nome; } }
         public DateTime DataNasicmento { get { return _dataNascimento; } }
         public bool Aprovado { get { return _aprovado; } }
@@ -27,7 +36,7 @@
         {
             DateTime agora = DateTime.Now;
 
-            if (_dataNascimento.Month < agora.Month || _dataNascimento.Month == agora.Month && _dataNascimento.Day < agora.Day)
+            if (agora.Month < _dataNascimento.Month || agora.Month == _dataNascimento.Month && agora.Day < _dataNascimento.Day)
                 return (agora.Year - _dataNascimento.Year) - 1;
             else
                 return agora.Year - _dataNascimento.Year;

@@ -58,6 +58,9 @@ public class Program
                 case 2:
                     menu.AdicionarAluno();
                     break;
+                case 3:
+                    menu.EditarAluno();
+                    break;
                 case 4:
                     menu.ApagarAluno();
                     break;

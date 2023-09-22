@@ -20,9 +20,11 @@
 			return _alunos;
 		}
 
-		public void Editar(Aluno aluno)
+		public void Editar(Aluno aluno, Aluno alunoEditado)
 		{
+			int indice = _alunos.IndexOf(aluno);
 
+			_alunos[indice] = alunoEditado;
 		}
 
 		public void Apagar(Aluno aluno)

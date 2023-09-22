@@ -34,6 +34,40 @@
 			Console.ReadKey();
 		}
 
+		public void EditarAluno() // Update
+		{
+			Aluno aluno;
+			Console.Clear();
+
+            Console.Write("Informe o nome do aluno para editar: ");
+            string nome = Console.ReadLine();
+
+            aluno = _repositorio.Listar().Find(al => al.Nome.Equals(nome));
+
+			if (aluno != null)
+			{
+                Console.WriteLine("Resultado:");
+                Console.WriteLine(aluno);
+
+				Console.Write("\nNovo nome: ");
+				string novoNome = Console.ReadLine();
+
+				Console.Write("Nova data de nascimento (dia/mes/ano): ");
+				string novaDataNascimento = Console.ReadLine();
+
+				Console.Write("Nova média final: ");
+				double novaMediaFinal= double.Parse(Console.ReadLine());
+
+				_repositorio.Editar(aluno, new Aluno(novoNome, DateTime.ParseExact(novaDataNascimento, "dd/MM/yyyy", null), novaMediaFinal, aluno.Id));
+            }
+            else
+            {
+                Console.WriteLine("Aluno não encontrado. Tente novamente.");
+            }
+
+            Console.ReadKey();
+        }
+
 		public void ApagarAluno() // Delete
 		{
 			Aluno aluno;
