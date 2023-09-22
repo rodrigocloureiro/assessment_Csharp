@@ -32,9 +32,13 @@ public class Program
 
         TipoOperacao();
 
-        //_repositorio.Adicionar(new Aluno("Rodrigo Loureiro", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        //_repositorio.Adicionar(new Aluno("Maria Vianna", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        //_repositorio.Adicionar(new Aluno("Pingo Doce", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        _repositorio.Adicionar(new Aluno("Rodrigo Loureiro", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        _repositorio.Adicionar(new Aluno("Maria Vianna", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        _repositorio.Adicionar(new Aluno("Rodrigo Vianna", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        _repositorio.Adicionar(new Aluno("Bruno", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        _repositorio.Adicionar(new Aluno("Ricardo", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        _repositorio.Adicionar(new Aluno("Morais", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        _repositorio.Adicionar(new Aluno("Gabriel", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
 
         Menu menu = new Menu(_repositorio);
 
