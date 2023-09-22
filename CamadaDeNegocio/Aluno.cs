@@ -21,6 +21,15 @@
         public double MediaFinal { get { return _mediaFinal; } }
         public Guid Id { get { return _id; } }
 
+        private int CalcularIdade()
+        {
+            DateTime agora = DateTime.Now;
+
+            if (_dataNascimento.Month < agora.Month || _dataNascimento.Month == agora.Month && _dataNascimento.Day < agora.Day)
+                return (agora.Year - _dataNascimento.Year) - 1;
+            else
+                return agora.Year - _dataNascimento.Year;
+        }
     }
 }
 
