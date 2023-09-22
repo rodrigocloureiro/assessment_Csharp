@@ -32,6 +32,10 @@ public class Program
 
         TipoOperacao();
 
+        //_repositorio.Adicionar(new Aluno("Rodrigo Loureiro", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        //_repositorio.Adicionar(new Aluno("Maria Vianna", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        //_repositorio.Adicionar(new Aluno("Pingo Doce", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+
         Menu menu = new Menu(_repositorio);
 
         while (true)
@@ -49,17 +53,16 @@ public class Program
             switch (opcao)
             {
                 case 1:
-                    menu.ListarAlunos();
+                    menu.ListarAluno();
                     break;
                 case 2:
                     menu.AdicionarAluno();
                     break;
+                case 4:
+                    menu.ApagarAluno();
+                    break;
             }
         }
-
-        //_repositorio.Salvar(new Aluno("Rodrigo Loureiro", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-
-        //_repositorio.Listar().ForEach(al => Console.WriteLine(al));
 
         Console.ReadKey();
     }

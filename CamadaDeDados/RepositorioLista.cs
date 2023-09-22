@@ -27,7 +27,7 @@
 
 		public void Apagar(Aluno aluno)
 		{
-
+			_alunos.Remove(aluno);
 		}
     }
 }
