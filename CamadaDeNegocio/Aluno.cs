@@ -13,6 +13,7 @@
             _nome = nome;
             _dataNascimento = dataNascimento;
             _mediaFinal = mediaFinal;
+            _id = new Guid();
         }
 
         public string Nome { get { return _nome; } }
@@ -29,6 +30,16 @@
                 return (agora.Year - _dataNascimento.Year) - 1;
             else
                 return agora.Year - _dataNascimento.Year;
+        }
+
+        public override string ToString()
+        {
+            return $"ID: {_id}\n" +
+                $"Nome: {_nome}\n" +
+                $"Data de nascimento: {_dataNascimento}\n" +
+                $"Idade: {CalcularIdade()}\n" +
+                $"Média final: {_mediaFinal:F2}\n" +
+                $"Situação: {(_aprovado ? "Aprovado" : "Reprovado")}\n";
         }
     }
 }
