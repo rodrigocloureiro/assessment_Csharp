@@ -14,7 +14,7 @@
             _dataNascimento = dataNascimento;
             _mediaFinal = mediaFinal;
             _aprovado = mediaFinal >= 8 ? true : false;
-            _id = new Guid();
+            _id = Guid.NewGuid();
         }
 
         public string Nome { get { return _nome; } }
@@ -37,7 +37,7 @@
         {
             return $"ID: {_id}\n" +
                 $"Nome: {_nome}\n" +
-                $"Data de nascimento: {_dataNascimento}\n" +
+                $"Data de nascimento: {_dataNascimento.ToString("dd/MM/yyyy")}\n" +
                 $"Idade: {CalcularIdade()}\n" +
                 $"Média final: {_mediaFinal:F2}\n" +
                 $"Situação: {(_aprovado ? "Aprovado" : "Reprovado")}\n";
