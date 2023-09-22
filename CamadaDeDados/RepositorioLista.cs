@@ -10,7 +10,7 @@
 		}
 
 
-		public void Salvar(Aluno aluno)
+		public void Adicionar(Aluno aluno)
 		{
 			_alunos.Add(aluno);
 		}

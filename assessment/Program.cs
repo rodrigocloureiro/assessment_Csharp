@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace assessment;
+﻿namespace assessment;
 public class Program
 {
     public delegate IRepositorio Repositorios();
@@ -34,7 +32,7 @@ public class Program
 
         TipoOperacao();
 
-        //_repositorio.Salvar(new Aluno("Rodrigo Loureiro", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", CultureInfo.CurrentCulture), 9.1));
+        //_repositorio.Salvar(new Aluno("Rodrigo Loureiro", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
 
         //_repositorio.Listar().ForEach(al => Console.WriteLine(al));
 
