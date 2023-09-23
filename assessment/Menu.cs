@@ -107,7 +107,7 @@
                 int opcao = int.Parse(Console.ReadLine());
 
                 if (opcao == 1) _repositorio.Apagar(aluno);
-                else Console.WriteLine("ok. Voltando..");
+                else Console.WriteLine("Ok. Voltando..");
             }
             else
             {

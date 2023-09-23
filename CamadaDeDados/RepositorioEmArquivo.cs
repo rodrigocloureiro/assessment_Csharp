@@ -1,17 +1,19 @@
-﻿namespace assessment
+﻿using System.Runtime.Intrinsics.X86;
+
+namespace assessment
 {
     public class RepositorioEmArquivo : IRepositorio
     {
         private List<Aluno> _alunos;
-        private const string PathFile = "alunos.csv";
+        private string _pathFile = "alunos.csv";
 
         public RepositorioEmArquivo()
         {
             _alunos = new();
 
-            if (File.Exists(PathFile))
+            if (File.Exists(_pathFile))
             {
-                string[] valores = File.ReadAllLines(PathFile);
+                string[] valores = File.ReadAllLines(_pathFile);
 
                 foreach (string valor in valores)
                 {
@@ -21,24 +23,20 @@
             }
             else
             {
-                File.Create(PathFile);
+                File.Create(_pathFile);
             }
+        }
+
+        private void PersistirNoArquivo()
+        {
+            List<string> alunosArquivo = _alunos.Select(al => $"{al.Id};{al.Nome};{al.DataNascimento:dd/MM/yyyy};{al.CalcularIdade()};{al.MediaFinal};{al.Aprovado}").ToList();
+            File.WriteAllLines(_pathFile, alunosArquivo);
         }
 
         public void Adicionar(Aluno aluno) // Create
         {
             _alunos.Add(aluno);
-            List<string> aux = new();
-
-            //IEnumerable<string> teste = _alunos.Select(al => $"{al.Id};{al.Nome};{al.DataNascimento:dd/MM/yyyy};{al.CalcularIdade()};{al.MediaFinal};{al.Aprovado}");
-            //File.WriteAllLines(PathFile, teste);
-
-            foreach (Aluno al in _alunos)
-            {
-                aux.Add($"{al.Id};{al.Nome};{al.DataNascimento:dd/MM/yyyy};{al.CalcularIdade()};{al.MediaFinal};{al.Aprovado}");
-            }
-
-            File.WriteAllLines(PathFile, aux);
+            PersistirNoArquivo();
         }
 
         public List<Aluno> Listar() // Read
@@ -49,30 +47,14 @@
         public void Editar(Aluno aluno, Aluno alunoEditado) // Update
         {
             int indice = _alunos.IndexOf(aluno);
-
             _alunos[indice] = alunoEditado;
-
-            List<string> aux = new();
-
-            foreach (Aluno al in _alunos)
-            {
-                aux.Add($"{al.Id};{al.Nome};{al.DataNascimento:dd/MM/yyyy};{al.CalcularIdade()};{al.MediaFinal};{al.Aprovado}");
-            }
-
-            File.WriteAllLines(PathFile, aux);
+            PersistirNoArquivo();
         }
 
         public void Apagar(Aluno aluno) // Delete
         {
             _alunos.Remove(aluno);
-            List<string> aux = new();
-
-            foreach (Aluno al in _alunos)
-            {
-                aux.Add($"{al.Id};{al.Nome};{al.DataNascimento:dd/MM/yyyy};{al.CalcularIdade()};{al.MediaFinal};{al.Aprovado}");
-            }
-
-            File.WriteAllLines(PathFile, aux);
+            PersistirNoArquivo();
         }
     }
 }
