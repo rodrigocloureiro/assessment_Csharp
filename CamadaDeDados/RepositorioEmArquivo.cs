@@ -1,6 +1,4 @@
-﻿using System.Runtime.Intrinsics.X86;
-
-namespace assessment
+﻿namespace assessment
 {
     public class RepositorioEmArquivo : IRepositorio
     {
