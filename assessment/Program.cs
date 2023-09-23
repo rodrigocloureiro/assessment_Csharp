@@ -26,11 +26,31 @@ public class Program
         _repositorio = repositorios();
     }
 
+    public static void ExibirUltimosCadastros()
+    {
+        Console.Clear();
+
+        List<Aluno> alunos = _repositorio.Listar();
+        List<Aluno> ultimosCadastros = alunos.Count >=5 ? alunos.GetRange(alunos.Count - 5, 5) : alunos;
+
+        if (ultimosCadastros.Count > 0 && ultimosCadastros.Count < 5) Console.WriteLine($"Há um total de {ultimosCadastros.Count} alunos cadastrados.");
+        else if (ultimosCadastros.Count > 0)
+        {
+            Console.WriteLine("Últimos 5 cadastros:");
+            ultimosCadastros.ForEach(al => Console.WriteLine(al));
+        }
+        else Console.WriteLine("Não há alunos cadastrados.");
+
+        Console.ReadKey();
+    }
+
     public static void Main(string[] args)
     {
         string pathFile = "alunos.csv";
 
         TipoOperacao();
+
+        ExibirUltimosCadastros();
 
         //_repositorio.Adicionar(new Aluno("Rodrigo Loureiro", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
         //_repositorio.Adicionar(new Aluno("Maria Vianna", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
