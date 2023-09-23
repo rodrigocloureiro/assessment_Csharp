@@ -29,9 +29,17 @@
         public void Adicionar(Aluno aluno) // Create
         {
             _alunos.Add(aluno);
+            List<string> aux = new();
 
-            var teste = _alunos.Select(al => $"{al.Id};{al.Nome};{al.DataNascimento:dd/MM/yyyy};{al.CalcularIdade()};{al.MediaFinal};{al.Aprovado}");
-            File.WriteAllLines(PathFile, teste);
+            //IEnumerable<string> teste = _alunos.Select(al => $"{al.Id};{al.Nome};{al.DataNascimento:dd/MM/yyyy};{al.CalcularIdade()};{al.MediaFinal};{al.Aprovado}");
+            //File.WriteAllLines(PathFile, teste);
+
+            foreach (Aluno al in _alunos)
+            {
+                aux.Add($"{al.Id};{al.Nome};{al.DataNascimento:dd/MM/yyyy};{al.CalcularIdade()};{al.MediaFinal};{al.Aprovado}");
+            }
+
+            File.WriteAllLines(PathFile, aux);
         }
 
         public List<Aluno> Listar() // Read
