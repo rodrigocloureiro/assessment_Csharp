@@ -2,8 +2,7 @@
 public class Program
 {
     public delegate IRepositorio Repositorios();
-    //public IRepositorio _repositorio;
-    public static IRepositorio _repositorio;
+    public static IRepositorio _repositorio; //public IRepositorio _repositorio;
 
     public static void TipoOperacao()
     {
@@ -22,8 +21,7 @@ public class Program
             return;
         }
 
-        //new Program()._repositorio = repositorios();
-        _repositorio = repositorios();
+        _repositorio = repositorios(); //new Program()._repositorio = repositorios();
     }
 
     public static void ExibirUltimosCadastros()
@@ -33,21 +31,21 @@ public class Program
         List<Aluno> alunos = _repositorio.Listar();
         List<Aluno> ultimosCadastros = alunos.Count >=5 ? alunos.GetRange(alunos.Count - 5, 5) : alunos;
 
-        if (ultimosCadastros.Count > 0 && ultimosCadastros.Count < 5) Console.WriteLine($"Há um total de {ultimosCadastros.Count} alunos cadastrados.");
+        if (ultimosCadastros.Count > 0 && ultimosCadastros.Count < 5)
+            Console.WriteLine($"Há um total de {ultimosCadastros.Count} alunos cadastrados.");
         else if (ultimosCadastros.Count > 0)
         {
-            Console.WriteLine("Últimos 5 cadastros:");
+            Console.WriteLine("Últimos 5 cadastros:\n");
             ultimosCadastros.ForEach(al => Console.WriteLine(al));
         }
         else Console.WriteLine("Ainda não há alunos cadastrados.");
 
+        Console.WriteLine("Aperte ENTER para continuar");
         Console.ReadKey();
     }
 
     public static void Main(string[] args)
     {
-        string pathFile = "alunos.csv";
-
         TipoOperacao();
 
         ExibirUltimosCadastros();
@@ -57,7 +55,7 @@ public class Program
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("1- Visualizar alunos"); // Read
+            Console.WriteLine("1- Pesquisar aluno"); // Read
             Console.WriteLine("2- Adicionar aluno"); // Create
             Console.WriteLine("3- Editar aluno"); // Update
             Console.WriteLine("4- Apagar aluno"); // Delete

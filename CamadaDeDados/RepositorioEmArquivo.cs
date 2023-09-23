@@ -23,7 +23,6 @@
             {
                 File.Create(PathFile);
             }
-            Console.ReadKey();
         }
 
         public void Adicionar(Aluno aluno) // Create
