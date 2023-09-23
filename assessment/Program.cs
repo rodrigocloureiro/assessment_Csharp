@@ -15,7 +15,7 @@ public class Program
         int operacao = int.Parse(Console.ReadLine());
 
         if (operacao == 1) repositorios = () => new RepositorioLista();
-        else if (operacao == 2) return;
+        else if (operacao == 2) repositorios = () => new RepositorioArquivo();
         else
         {
             Console.WriteLine("Opção inválida.");
@@ -32,13 +32,13 @@ public class Program
 
         TipoOperacao();
 
-        _repositorio.Adicionar(new Aluno("Rodrigo Loureiro", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        _repositorio.Adicionar(new Aluno("Maria Vianna", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        _repositorio.Adicionar(new Aluno("Rodrigo Vianna", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        _repositorio.Adicionar(new Aluno("Bruno", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        _repositorio.Adicionar(new Aluno("Ricardo", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        _repositorio.Adicionar(new Aluno("Morais", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        _repositorio.Adicionar(new Aluno("Gabriel", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        //_repositorio.Adicionar(new Aluno("Rodrigo Loureiro", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        //_repositorio.Adicionar(new Aluno("Maria Vianna", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        //_repositorio.Adicionar(new Aluno("Rodrigo Vianna", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        //_repositorio.Adicionar(new Aluno("Bruno", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        //_repositorio.Adicionar(new Aluno("Ricardo", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        //_repositorio.Adicionar(new Aluno("Morais", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
+        //_repositorio.Adicionar(new Aluno("Gabriel", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
 
         Menu menu = new Menu(_repositorio);
 

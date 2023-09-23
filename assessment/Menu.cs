@@ -43,11 +43,11 @@
                 Console.WriteLine("Escolha uma opção abaixo para visualizar mais detalhes:");
                 for (int i = 0; i < listaFiltrada.Count; i++)
                 {
-                    Console.WriteLine($"{i+1}- {listaFiltrada.ElementAt(i).Nome}");
+                    Console.WriteLine($"{i + 1}- {listaFiltrada.ElementAt(i).Nome}");
                 }
                 int.TryParse(Console.ReadLine(), out int opcao);
 
-                if (opcao > 0 && opcao <= listaFiltrada.Count()) Console.WriteLine(listaFiltrada.ElementAt(opcao-1));
+                if (opcao > 0 && opcao <= listaFiltrada.Count()) Console.WriteLine(listaFiltrada.ElementAt(opcao - 1));
                 else Console.WriteLine("Opção inválida. Tente novamente.");
             }
             else Console.WriteLine("Aluno não encontrado. Tente novamente.");

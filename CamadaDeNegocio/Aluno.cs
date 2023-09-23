@@ -27,12 +27,12 @@
         }
 
         public string Nome { get { return _nome; } }
-        public DateTime DataNasicmento { get { return _dataNascimento; } }
+        public DateTime DataNascimento { get { return _dataNascimento; } }
         public bool Aprovado { get { return _aprovado; } }
         public double MediaFinal { get { return _mediaFinal; } }
         public Guid Id { get { return _id; } }
 
-        private int CalcularIdade()
+        public int CalcularIdade()
         {
             DateTime agora = DateTime.Now;
 
@@ -46,9 +46,9 @@
         {
             return $"ID: {_id}\n" +
                 $"Nome: {_nome}\n" +
-                $"Data de nascimento: {_dataNascimento.ToString("dd/MM/yyyy")}\n" +
+                $"Data de nascimento: {_dataNascimento:dd/MM/yyyy}\n" +
                 $"Idade: {CalcularIdade()}\n" +
-                $"Média final: {_mediaFinal:F2}\n" +
+                $"Média final: {_mediaFinal:F1}\n" +
                 $"Situação: {(_aprovado ? "Aprovado" : "Reprovado")}\n";
         }
     }
