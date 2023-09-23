@@ -1,10 +1,10 @@
 ﻿namespace assessment
 {
-    public class RepositorioLista : IRepositorio
+    public class RepositorioEmColecao : IRepositorio
     {
         private List<Aluno> _alunos;
 
-        public RepositorioLista()
+        public RepositorioEmColecao()
         {
             _alunos = new();
         }

@@ -14,8 +14,8 @@ public class Program
         Console.WriteLine("2- Em arquivo");
         int operacao = int.Parse(Console.ReadLine());
 
-        if (operacao == 1) repositorios = () => new RepositorioLista();
-        else if (operacao == 2) repositorios = () => new RepositorioArquivo();
+        if (operacao == 1) repositorios = () => new RepositorioEmColecao();
+        else if (operacao == 2) repositorios = () => new RepositorioEmArquivo();
         else
         {
             Console.WriteLine("Opção inválida.");
@@ -39,7 +39,7 @@ public class Program
             Console.WriteLine("Últimos 5 cadastros:");
             ultimosCadastros.ForEach(al => Console.WriteLine(al));
         }
-        else Console.WriteLine("Não há alunos cadastrados.");
+        else Console.WriteLine("Ainda não há alunos cadastrados.");
 
         Console.ReadKey();
     }
@@ -51,14 +51,6 @@ public class Program
         TipoOperacao();
 
         ExibirUltimosCadastros();
-
-        //_repositorio.Adicionar(new Aluno("Rodrigo Loureiro", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        //_repositorio.Adicionar(new Aluno("Maria Vianna", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        //_repositorio.Adicionar(new Aluno("Rodrigo Vianna", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        //_repositorio.Adicionar(new Aluno("Bruno", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        //_repositorio.Adicionar(new Aluno("Ricardo", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        //_repositorio.Adicionar(new Aluno("Morais", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
-        //_repositorio.Adicionar(new Aluno("Gabriel", DateTime.ParseExact("01/03/2001", "dd/MM/yyyy", null), 9.1));
 
         Menu menu = new Menu(_repositorio);
 

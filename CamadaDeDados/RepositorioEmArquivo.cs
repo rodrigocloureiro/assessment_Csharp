@@ -1,11 +1,11 @@
 ﻿namespace assessment
 {
-    public class RepositorioArquivo : IRepositorio
+    public class RepositorioEmArquivo : IRepositorio
     {
         private List<Aluno> _alunos;
         private const string PathFile = "alunos.csv";
 
-        public RepositorioArquivo()
+        public RepositorioEmArquivo()
         {
             _alunos = new();
 
