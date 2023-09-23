@@ -47,15 +47,33 @@
             return _alunos;
         }
 
-        public void Editar(Aluno aluno, Aluno alunoEditado)
+        public void Editar(Aluno aluno, Aluno alunoEditado) // Update
         {
+            int indice = _alunos.IndexOf(aluno);
 
+            _alunos[indice] = alunoEditado;
+
+            List<string> aux = new();
+
+            foreach (Aluno al in _alunos)
+            {
+                aux.Add($"{al.Id};{al.Nome};{al.DataNascimento:dd/MM/yyyy};{al.CalcularIdade()};{al.MediaFinal};{al.Aprovado}");
+            }
+
+            File.WriteAllLines(PathFile, aux);
         }
 
-        public void Apagar(Aluno aluno)
+        public void Apagar(Aluno aluno) // Delete
         {
+            _alunos.Remove(aluno);
+            List<string> aux = new();
 
+            foreach (Aluno al in _alunos)
+            {
+                aux.Add($"{al.Id};{al.Nome};{al.DataNascimento:dd/MM/yyyy};{al.CalcularIdade()};{al.MediaFinal};{al.Aprovado}");
+            }
+
+            File.WriteAllLines(PathFile, aux);
         }
     }
 }
-
