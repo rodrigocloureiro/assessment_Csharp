@@ -23,7 +23,6 @@
 
             _repositorio.Adicionar(new Aluno(nome, DateTime.ParseExact(dataNascimento, "dd/MM/yyyy", null), mediaFinal));
 
-            Console.WriteLine("Aluno adicionado com sucesso.");
             Console.ReadKey();
         }
 

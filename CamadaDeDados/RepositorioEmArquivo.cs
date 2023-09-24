@@ -4,6 +4,7 @@
     {
         private List<Aluno> _alunos;
         private string _pathFile = "alunos.csv";
+        public event Notificacao<RepositorioEventArgs> RepositoryChanged;
 
         public RepositorioEmArquivo()
         {
@@ -35,6 +36,7 @@
         {
             _alunos.Add(aluno);
             PersistirNoArquivo();
+            RepositoryChanged.Invoke(aluno, new RepositorioEventArgs { Acao = "adicionado" });
         }
 
         public List<Aluno> Listar() // Read
@@ -47,12 +49,14 @@
             int indice = _alunos.IndexOf(aluno);
             _alunos[indice] = alunoEditado;
             PersistirNoArquivo();
+            RepositoryChanged.Invoke(alunoEditado, new RepositorioEventArgs { Acao = "editado" });
         }
 
         public void Apagar(Aluno aluno) // Delete
         {
             _alunos.Remove(aluno);
             PersistirNoArquivo();
+            RepositoryChanged.Invoke(aluno, new RepositorioEventArgs { Acao = "removido" });
         }
     }
 }

@@ -41,6 +41,11 @@ public class Program
         Console.ReadKey();
     }
 
+    public static void GerandoLog(Aluno aluno, RepositorioEventArgs e)
+    {
+        Console.WriteLine($"O aluno {aluno.Nome} foi {e.Acao}");
+    }
+
     public static void Main(string[] args)
     {
         do
@@ -59,6 +64,7 @@ public class Program
 
         bool prosseguir = true;
         Menu menu = new Menu(_repositorio);
+        _repositorio.RepositoryChanged += GerandoLog;
 
         do
         {
