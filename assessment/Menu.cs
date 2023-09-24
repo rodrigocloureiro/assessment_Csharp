@@ -30,13 +30,7 @@
         public void ListarAluno() // Read
         {
             Console.Clear();
-            Console.Write("Informe o nome ou ID do aluno: ");
-            string filtro = Console.ReadLine();
-
-            List<Aluno> listaFiltrada =
-                _repositorio.Listar()
-                .Where(al => al.Nome.ToLower().Contains(filtro.ToLower()) || al.Id.ToString().Equals(filtro))
-                .ToList();
+            List<Aluno> listaFiltrada = Filtrar();
 
             if (listaFiltrada.Count > 0)
             {
@@ -57,20 +51,15 @@
 
         public void EditarAluno() // Update
         {
-            Aluno aluno;
             Console.Clear();
-
-            Console.Write("Informe o nome do aluno para editar: ");
-            string nome = Console.ReadLine();
-
-            aluno = _repositorio.Listar().Find(al => al.Nome.Equals(nome));
+            Aluno? aluno = Pesquisar();
 
             if (aluno != null)
             {
                 Console.WriteLine("Resultado:");
                 Console.WriteLine(aluno);
 
-                Console.Write("\nNovo nome: ");
+                Console.Write("Novo nome: ");
                 string novoNome = Console.ReadLine();
 
                 Console.Write("Nova data de nascimento (dia/mes/ano): ");
@@ -91,13 +80,9 @@
 
         public void ApagarAluno() // Delete
         {
-            Aluno aluno;
             Console.Clear();
+            Aluno? aluno = Pesquisar();
 
-            Console.Write("Informe o nome do aluno para apagar: ");
-            string nome = Console.ReadLine();
-
-            aluno = _repositorio.Listar().Find(al => al.Nome.Equals(nome));
             if (aluno != null)
             {
                 Console.WriteLine("Resultado:");
@@ -115,6 +100,24 @@
             }
 
             Console.ReadKey();
+        }
+
+        private Aluno? Pesquisar()
+        {
+            Console.Write("Informe o nome exato ou ID do aluno: ");
+            string pesquisa = Console.ReadLine();
+
+            return _repositorio.Listar().Find(al => al.Nome.ToLower().Equals(pesquisa.ToLower()) || al.Id.ToString().Equals(pesquisa));
+        }
+
+        private List<Aluno> Filtrar()
+        {
+            Console.Write("Informe o nome ou ID do aluno: ");
+            string filtro = Console.ReadLine();
+
+            return _repositorio.Listar()
+                .Where(al => al.Nome.ToLower().Contains(filtro.ToLower()) || al.Id.ToString().Equals(filtro))
+                .ToList();
         }
     }
 }
