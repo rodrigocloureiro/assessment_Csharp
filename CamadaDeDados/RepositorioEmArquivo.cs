@@ -13,11 +13,14 @@
             if (File.Exists(_pathFile))
             {
                 string[] valores = File.ReadAllLines(_pathFile);
-
                 foreach (string valor in valores)
                 {
-                    string[] partes = valor.Split(";");
-                    _alunos.Add(new Aluno(partes[1], DateTime.ParseExact(partes[2], "dd/MM/yyyy", null), double.Parse(partes[4]), new Guid(partes[0])));
+                    string[] parte = valor.Split(";");
+                    _alunos.Add(
+                        new Aluno(parte[1],
+                        DateTime.ParseExact(parte[2], "dd/MM/yyyy", null),
+                        double.Parse(parte[4]),
+                        new Guid(parte[0])));
                 }
             }
             else
@@ -47,6 +50,7 @@
         public void Editar(Aluno aluno, Aluno alunoEditado) // Update
         {
             int indice = _alunos.IndexOf(aluno);
+
             _alunos[indice] = alunoEditado;
             PersistirNoArquivo();
             RepositoryChanged.Invoke(alunoEditado, new RepositorioEventArgs { Acao = "editado" });

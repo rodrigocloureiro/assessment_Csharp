@@ -1,5 +1,7 @@
 ﻿namespace assessment
 {
+    public delegate void Notificacao<RepositorioEventArgs>(Aluno aluno, RepositorioEventArgs e);
+
     public interface IRepositorio
     {
         event Notificacao<RepositorioEventArgs> RepositoryChanged;

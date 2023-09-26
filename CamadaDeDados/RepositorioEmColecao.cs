@@ -1,7 +1,5 @@
 ﻿namespace assessment
 {
-    public delegate void Notificacao<RepositorioEventArgs>(Aluno aluno, RepositorioEventArgs e);
-
     public class RepositorioEmColecao : IRepositorio
     {
         private List<Aluno> _alunos;
